@@ -28,11 +28,13 @@ class circular_Queue:
         #If there is only one Element
         elif(self.front==self.rear):
             temp = self.arr[self.rear]
+            # self.arr[self.rear] = None
             self.rear = -1
             self.front = -1
             return temp
         else:
             temp = self.arr[self.front]
+            # self.arr[self.front] = None
             self.front = (self.front+1)%self.size
             return temp
         
@@ -43,31 +45,45 @@ class circular_Queue:
         else:
             return self.arr[self.front]
         
-    # def enqueue_Data_with_Overwrite(self,item):
-    #     if((self.rear+1)%self.size==self.front):
-    #         self.dequeue()
-    #         self.enqueue(item)
-    #     else:
-    #         self.
+    def enqueue_Data_with_Overwrite(self,item):
+        #If queue is empty
+        if(self.front == -1):
+            self.front = 0
+            self.rear = 0
+            self.arr[self.rear] = item
+        else:
+            self.rear=(self.rear+1)%self.size
+            self.arr[self.rear] = item
+            if self.rear == self.front:
+                self.front = (self.front + 1) % self.size
         
     def printQueue(self):
         print(self.arr)
         
     
-q1 = circular_Queue(3)
-q1.enqueue(1)
-q1.enqueue(2)
-q1.enqueue(3)
-q1.enqueue(4)
-q1.printQueue()
-print(q1.peek())
-print(q1.dequeue())
-q1.enqueue(4)
-q1.printQueue()
-print(q1.dequeue())
-        
+q1 = circular_Queue(5)
 
-    
+print()
+print("Initial queue with size: 5")
+q1.enqueue("Apple")
+q1.enqueue("Mango")
+q1.enqueue("Cherry")
+q1.enqueue("Banana")
+q1.enqueue("Grapes")
+
+print("\nTrying to enqueue when queue is full:")
+q1.enqueue("Orange")
+
+print("\nQueue Status:")
+q1.printQueue()
+
+print("\nAdding an element to overwrite the previous data when full.")
+q1.enqueue_Data_with_Overwrite("Strawberry")
+q1.enqueue_Data_with_Overwrite("Papaya")
+
         
-        
+print("\nQueue Status now:")
+q1.printQueue()
     
+print("\nDequeue an element:")
+print(q1.dequeue())

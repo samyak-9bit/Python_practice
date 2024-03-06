@@ -17,7 +17,7 @@ class Priority_Queue:
         else:
             return heapq.heappop(self.arr)
 
-    # #peek the element with highest priority   
+    #peek the element with highest priority   
     def peek(self):
         if len(self.arr) == 0:
             print("Queue is Empty")
@@ -35,17 +35,19 @@ q1.enqueue('Make Tea', 2)
 q1.enqueue('Study', 1)
 q1.enqueue('Sing', 3)
 
-print("Initial Queue")
-q1.print_Queue_basedOn_Priority()
+print()
 
-print("Peek Element:")
+print("Peek the queue:")
 print(q1.peek())
-print("Queue after Peek:")
+
+print("\nInitial queue based on priority")
 q1.print_Queue_basedOn_Priority()
 
-print("Deque Element:")
+print("\nDeque Element:")
 print(q1.dequeue())
-print("Queue after Dequeue:")
+
+
+print("\nQueue after Dequeue:")
 q1.print_Queue_basedOn_Priority()
 
 
